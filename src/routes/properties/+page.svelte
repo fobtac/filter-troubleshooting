@@ -9,10 +9,10 @@
     import debounce from "lodash.debounce";
     import * as Accordion from "$lib/components/ui/accordion"
     import { Slider } from "$lib/components/ui/slider"
-		import { cn } from "$lib/utils";
-		import ScrollArea from "$lib/components/ui/scroll-area/scroll-area.svelte";
+	import { cn } from "$lib/utils";
+	import ScrollArea from "$lib/components/ui/scroll-area/scroll-area.svelte";
 
-	  let form = $props();
+	let form = $props();
     let userEmail = $state();
 	let errorMessage = '';
     
@@ -29,11 +29,6 @@
         { name: 'Size : Large to Small ', value: 'Price-desc'}
     ] as const;
     
-    //const SUBCATEGORIES = [
-    //    { name: 'Simple', selected: true, href: '#' },
-    //    { name: 'Luxury', selected: false, href: '#' },
-    //    { name: 'Rural', selected: false, href: '#' },
-    //]
 
     const NEIGHBORHOOD_FILTERS = {
         id: 'Neighborhood',
@@ -159,16 +154,7 @@
         <div class="grid grid-cols-1 gap-x-8 gap-y-10">
 
             <div class="block">
-                <!--
-                <ul class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-500">
-                    {#each SUBCATEGORIES as { href, name, selected }}
-                        <li>
-                            <button disabled={!selected} class="disabled:cursor-not-allowed disabled:opacity-60"
-                                >{name}</button>
-                        </li>
-                    {/each}
-                </ul>
-                -->
+
                 <Accordion.Root multiple class="lg:grid-cols-4 lg:flex gap-16">
                     <Accordion.Item value="Neighborhood">
                         <Accordion.Trigger class="py-3 text-sm text-gray-400 hover:text-gray-500">
@@ -251,56 +237,7 @@
                                         </label>
                                     </li>
                                 {/each}
-                                <!--
-                                <li class="flex flex-col justify-center gap-2">
-                                    <div>
-                                        <input
-                                            type="radio"
-                                            id="Bedrooms-{BEDROOMS_FILTERS.options.length}"
-                                            class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                            onchange={() => {
-                                                filter.Bedrooms = {
-                                                    isCustom: true,
-                                                    range: [0, 10]
-                                                };
-                                            }}
-                                            checked={filter.Bedrooms.isCustom}
-                                        />
-                                        <label
-                                            for={`Bedrooms-${BEDROOMS_FILTERS.options.length}`}
-                                            class="ml-3 text-sm text-gray-600"
-                                        >
-                                            Custom
-                                        </label>
-                                    </div>
-                                    <div class="">
-                                        
-                                        <p class="font-medium">Bedrooms</p>
-                                        
-                                        <div>
-                                            {filter.Bedrooms.isCustom
-                                                ? minBedrooms.toFixed(0)
-                                                : filter.Bedrooms.range[0].toFixed(0)}{' '}
-                                            Bedroom&#40s&#41 -{' '}
-                                            {filter.Bedrooms.isCustom
-                                                ? maxBedrooms.toFixed(0)
-                                                : filter.Bedrooms.range[1].toFixed(0)}{' '}
-                                            Bedrooms
-                                        </div>
-                                    </div>
-                                    <div class="px-3">
-                                        <Slider
-                                            value={filter.Bedrooms.isCustom ? filter.Bedrooms.range : DEFAULT_CUSTOM_BEDROOMS}
-                                            max={DEFAULT_CUSTOM_BEDROOMS[1]}
-                                            min={DEFAULT_CUSTOM_BEDROOMS[0]}
-                                            step={1}
-                                            class={cn(!filter.Bedrooms.isCustom && 'opacity-50')}
-                                            disabled={!filter.Bedrooms.isCustom}
-                                            onValueChange={debouncedSubmit}
-                                        />
-                                    </div>
-                                </li>
-                                -->
+                                
                             </ul>
                         </Accordion.Content>
                     </Accordion.Item>
@@ -331,92 +268,12 @@
                                         </label>
                                     </li>
                                 {/each}
-                                <!--
-                                <li class="flex flex-col justify-center gap-2">
-                                    <div>
-                                        <input
-                                            type="radio"
-                                            id="Price-{PRICE_FILTERS.options.length}"
-                                            class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                            onchange={() => {
-                                                filter.Price = {
-                                                    isCustom: true,
-                                                    range: [0, 10000]
-                                                };
-                                            }}
-                                            checked={filter.Price.isCustom}
-                                        />
-                                        <label
-                                            for={`Price-${PRICE_FILTERS.options.length}`}
-                                            class="ml-3 text-sm text-gray-600"
-                                        >
-                                            Custom
-                                        </label>
-                                    </div>
-                                    <div class="">
-                                        
-                                        <p class="font-medium">Price</p>
-                                        
-                                        <div>$
-                                            {filter.Price.isCustom
-                                                ? minPrice.toFixed(0)
-                                                : filter.Price.range[0].toFixed(0)}{' '}
-                                             -{' '}
-                                             $
-                                            {filter.Price.isCustom
-                                                ? maxPrice.toFixed(0)
-                                                : filter.Price.range[1].toFixed(0)}{' '}
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="px-3">
-                                        <Slider
-                                            value={filter.Price.isCustom ? filter.Price.range : DEFAULT_CUSTOM_PRICE}
-                                            max={DEFAULT_CUSTOM_PRICE[1]}
-                                            min={DEFAULT_CUSTOM_PRICE[0]}
-                                            step={1}
-                                            class={cn(!filter.Price.isCustom && 'opacity-50')}
-                                            disabled={!filter.Price.isCustom}
-                                            onValueChange={debouncedSubmit}
-                                        />
-                                    </div>
-                                    
-                                </li>
-                                -->
+                               
                             </ul>
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion.Root>
-                <!--
-                <div class="flex items-center place-self-end mt-4">
-                    <DropdownMenu.Root>
-                        <DropdownMenu.Trigger
-                            class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
-                            >Bedrooms Sort
-                            <ChevronDown />
-                        </DropdownMenu.Trigger>
-                        <DropdownMenu.Content align="end">
-                            {#each BEDROOMS_SORT_OPTIONS as { name, value }}
-                                <button
-                                    onclick={() => {
-                                        filter.BedroomsSort = value;
-                                    }}
-                                    class="block w-full p-2 px-4 text-left text-sm"
-                                    class:text-gray-900={value === filter.BedroomsSort}
-                                    class:bg-gray-100={value === filter.BedroomsSort}
-                                    class:text-gray-500={value === filter.BedroomsSort}>{name}</button
-                                >
-                            {/each}
-                        </DropdownMenu.Content>
-                    </DropdownMenu.Root>
-                    
-                    <button class="-m-2 ml-4 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
-                        <Filter class="size-5" />
-                    </button>
-                    
-                </div>
-                -->
+               
                 <div class="flex items-center place-self-end mt-4">
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger
@@ -438,11 +295,7 @@
                             {/each}
                         </DropdownMenu.Content>
                     </DropdownMenu.Root>
-                    <!--
-                    <button class="-m-2 ml-4 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
-                        <Filter class="size-5" />
-                    </button>
-                    -->
+
                 </div>
             </div>
             <ScrollArea class="h-[1000px] w-auto rounded-md border bg-white mb-10">
@@ -464,24 +317,13 @@
             <h2 class="text-2xl lg:text-4xl mt-4 text-center text-black font-bold">
                 Share this property!
             </h2>
-            <p1 class="text-base lg:text-lg text-black font-normal text-center mx-4">Enter your email address, we'll send you a one-time email with all of the info on this property.</p1><br>
-            <p2 class="text-xs italic place-self-center">We respect your privacy, your information is safe with us.<br>Please check your spam folder if you don't see an email from us.</p2>
             <form method="post" class="grid place-items-center">
                 <div class="flex flex-col place-items-center gap-5 p-5 w-full">
                     <input name="userEmail" type="email" class="input border border-white bg-cyan-500 w-full max-w-md placeholder-white focus:border-white rounded-sm p-2" placeholder="Enter your Email..." required bind:value={userEmail} />
                 </div>
-                <!--
-                {#if mounted}
-                  <Turnstile siteKey="0x4AAAAAAAZ3R4_VPXj_mYB_" class="cf-turnstile grid place-self-center"  />
-                {/if}
-                -->
+
                 <button type="submit" class="btn bg-cyan-500 text-white rounded-3xl text-xl p-3 m-5 w-1/2 place-self-center hover:bg-cyan-300 text-center">Submit</button>
-                <!--
-                <p2 class="text-sm lg:text-base text-black font-normal self-start p-5">For all reservation requests, please <a href='/#location' class="link">call</a> either location directly. For additional info, please see our <a href='/terms-and-conditions' class="link" target="_blank" rel="noopener noreferrer">terms and conditions.</a></p2><br>
-                {#if form?.Error}
-                <p>{Error}</p>
-                {/if}
-                -->
+
               </form>
         </fieldset>
 </main>
