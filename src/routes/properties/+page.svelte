@@ -1,16 +1,12 @@
 <script lang="ts" >
-    import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+    
     import ListingSkeleton from "$lib/components/ListingSkeleton.svelte";
     import Listing from "$lib/components/Listing.svelte";
     import type { Listing as TListing } from '$lib/server/db';
     import type { QueryResult } from '@upstash/vector';
-    import ChevronDown from 'lucide-svelte/icons/chevron-down';
-    import Filter from 'lucide-svelte/icons/filter';
     import debounce from "lodash.debounce";
-    import * as Accordion from "$lib/components/ui/accordion"
-    import { Slider } from "$lib/components/ui/slider"
-	import { cn } from "$lib/utils";
-	import ScrollArea from "$lib/components/ui/scroll-area/scroll-area.svelte";
+    import { cn } from "$lib/utils";
+
 
 	let form = $props();
     let userEmail = $state();
