@@ -155,12 +155,7 @@
 
             <div class="block">
 
-                <Accordion.Root multiple class="lg:grid-cols-4 lg:flex gap-16">
-                    <Accordion.Item value="Neighborhood">
-                        <Accordion.Trigger class="py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span class="font-medium text-gray-900"> Neighborhood </span>
-                        </Accordion.Trigger>
-                        <Accordion.Content class="pt-6 ">
+
                             <ul class="space-y-4">
                                 {#each NEIGHBORHOOD_FILTERS.options as { label, value }, id}
                                     <li class="flex items-center">
@@ -181,13 +176,8 @@
                                     </li>
                                 {/each}
                             </ul>
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item value="Property">
-                        <Accordion.Trigger class="py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span class="font-medium text-gray-900"> Property </span>
-                        </Accordion.Trigger>
-                        <Accordion.Content class="pt-6 ">
+
+                    
                             <ul class="space-y-4">
                                 {#each PROPERTY_FILTERS.options as { label, value }, id}
                                     <li class="flex items-center">
@@ -208,13 +198,7 @@
                                     </li>
                                 {/each}
                             </ul>
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item value="Bedrooms">
-                        <Accordion.Trigger class="py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span class="font-medium text-gray-900"> Bedrooms </span>
-                        </Accordion.Trigger>
-                        <Accordion.Content class="pt-6 ">
+                        
                             <ul class="space-y-4">
                                 {#each BEDROOMS_FILTERS.options as { label, value }, id}
                                     <li class="flex items-center">
@@ -239,13 +223,7 @@
                                 {/each}
                                 
                             </ul>
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item value="Price">
-                        <Accordion.Trigger class="py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span class="font-medium text-gray-900"> Price </span>
-                        </Accordion.Trigger>
-                        <Accordion.Content class="pt-6 ">
+                        
                             <ul class="space-y-4">
                                 {#each PRICE_FILTERS.options as { label, value }, id}
                                     <li class="flex items-center">
@@ -270,9 +248,7 @@
                                 {/each}
                                
                             </ul>
-                        </Accordion.Content>
-                    </Accordion.Item>
-                </Accordion.Root>
+
                
                 <div class="flex items-center place-self-end mt-4">
                     <DropdownMenu.Root>
@@ -298,7 +274,7 @@
 
                 </div>
             </div>
-            <ScrollArea class="h-[1000px] w-auto rounded-md border bg-white mb-10">
+            
                 <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:col-span-4">
                     {#await getListings()}
                         {#each { length: 24 } as _}
@@ -310,7 +286,7 @@
                         {/each}
                     {/await}
                 </ul>
-            </ScrollArea>
+
         </div>
     </section>
         <fieldset class="grid row-start-3 m-7 h-auto w-full lg:w-96 place-self-center">
